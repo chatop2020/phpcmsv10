@@ -1,3 +1,6 @@
+我从上游fork了代码过来自己改
+上游地址:https://github.com/zhaoxunzhiyin/phpcms.git
+
 # PHPCMS V10 修改版
 
 #### 联系QQ、微信：
