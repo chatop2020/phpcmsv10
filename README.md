@@ -1,6 +1,73 @@
 我从上游fork了代码过来自己改
 上游地址:https://github.com/zhaoxunzhiyin/phpcms.git
 
+# 具体fork方法
+
+我在github上fork了别人的项目，想自己进行更新维护，要怎么做
+ChatGPT
+要在GitHub上fork别人的项目并进行更新维护，可以按照以下步骤操作：
+
+Fork仓库：
+
+在GitHub上找到你想要fork的仓库，点击右上角的“Fork”按钮。这会在你的GitHub账号下创建一个该仓库的副本。
+克隆仓库到本地：
+
+在你的GitHub账户下找到你fork的仓库，点击“Code”按钮，复制仓库的HTTPS或者SSH链接。
+打开终端或者命令行，运行以下命令将仓库克隆到本地：
+sh
+复制代码
+git clone https://github.com/your-username/forked-repo.git
+进入克隆到本地的仓库目录：
+sh
+复制代码
+cd forked-repo
+设置远程上游仓库：
+
+将原始仓库（你fork自的那个仓库）添加为远程上游仓库，这样可以方便你从原始仓库拉取更新：
+sh
+复制代码
+git remote add upstream https://github.com/original-owner/original-repo.git
+保持你的fork与上游仓库同步：
+
+获取上游仓库的最新变化：
+sh
+复制代码
+git fetch upstream
+切换到你的默认分支（通常是main或者master）：
+sh
+复制代码
+git checkout main
+将上游仓库的更改合并到你的分支：
+sh
+复制代码
+git merge upstream/main
+如果有冲突，解决冲突后再提交。
+做出更改并提交：
+
+在本地仓库中进行你需要的更改。
+将更改添加到暂存区：
+sh
+复制代码
+git add .
+提交更改：
+sh
+复制代码
+git commit -m "描述你的更改"
+将更改推送到你的GitHub仓库：
+
+推送到你的远程仓库：
+sh
+复制代码
+git push origin main
+提交Pull Request（PR）：
+
+如果你希望将你的更改合并回原始仓库，可以在GitHub上提交一个Pull Request。
+在你的GitHub仓库页面，点击“Pull Requests”选项卡，然后点击“New Pull Request”按钮。
+选择你fork的分支和原始仓库的分支，填写PR的标题和描述，然后提交。
+通过这些步骤，你就可以成功fork别人的项目并进行更新和维护。如果你遇到具体的问题，可以在这里提供更多详细信息，我可以进一步帮助你解决。
+
+
+
 # PHPCMS V10 修改版
 
 #### 联系QQ、微信：
