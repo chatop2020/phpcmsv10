@@ -171,7 +171,8 @@ define('SYS_ATTACHMENT_PATH', pc_base::load_config('system','sys_attachment_path
 define('SYS_ATTACHMENT_URL', pc_base::load_config('system','sys_attachment_url'));
 define('SYS_ATTACHMENT_SAVE_TYPE', pc_base::load_config('system','sys_attachment_save_type'));
 define('SYS_ATTACHMENT_SAVE_DIR', pc_base::load_config('system','sys_attachment_save_dir'));
-
+define('SYS_CURL_PROXY_HOST', pc_base::load_config('system','curl_proxy_host'));
+define('SYS_CURL_PROXY_PORT', pc_base::load_config('system','curl_proxy_port'));
 !defined('CI_DEBUG') && define('CI_DEBUG', IS_DEV ? 1 : IS_ADMIN && SYS_DEBUG);
 !defined('IS_DEBUG') && define('IS_DEBUG', CI_DEBUG ? 0 : 1);
 

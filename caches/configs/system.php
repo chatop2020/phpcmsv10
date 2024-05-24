@@ -86,5 +86,7 @@ return array(
 'xunfei_skey' => '', //讯飞关键词提取 APIKey
 
 'admin_login_path' => '', //自定义的后台登录地址
+'curl_proxy_host' => '', //设置curl的代理地址(ip/域名)
+'curl_proxy_port' => '', //设置curl的代理端口
 );
 ?>

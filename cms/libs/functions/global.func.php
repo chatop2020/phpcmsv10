@@ -7,6 +7,35 @@
  */
 
 /**
+ * 判断url中是否包含本机地址以及局域网地址
+ * @param $url
+ * @return bool
+ */
+function isLocalOrLocalhost($url) {
+    $parsedUrl = parse_url($url);
+
+    // 如果 URL 为空或者不是一个有效的 URL，则返回 false
+    if (!$parsedUrl || !isset($parsedUrl['host'])) {
+        return false;
+    }
+
+    // 获取主机名
+    $host = $parsedUrl['host'];
+
+    // 判断是否为本机地址
+    if ($host == 'localhost' || $host == '127.0.0.1' || $host == '::1' || $host == '0.0.0.0') {
+        return true;
+    }
+
+    // 判断是否为局域网地址
+    if (filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
  * 返回经addslashes处理过的字符串或数组
  * @param $string 需要处理的字符串或数组
  * @return mixed
@@ -5246,6 +5275,13 @@ function dr_catcher_data($url, $timeout = 0, $is_log = true, $ct = 0) {
 	// curl模式
 	if (function_exists('curl_init')) {
 		$ch = curl_init($url);
+        if(!empty(SYS_CURL_PROXY_HOST) && !empty(SYS_CURL_PROXY_PORT) && !isLocalOrLocalhost($url)
+            &&filter_var(SYS_CURL_PROXY_HOST, FILTER_VALIDATE_IP)
+            && filter_var(SYS_CURL_PROXY_PORT, FILTER_VALIDATE_INT,
+                array('options' => array('min_range' => 1, 'max_range' => 65535)))){
+            curl_setopt($ch, CURLOPT_PROXY, SYS_CURL_PROXY_HOST);
+            curl_setopt($ch, CURLOPT_PROXYPORT, SYS_CURL_PROXY_PORT);
+        }
 		if (substr($url, 0, 8) == "https://") {
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
 			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, true); // 从证书中检查SSL加密算法是否存在
